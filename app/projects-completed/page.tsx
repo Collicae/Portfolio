@@ -7,11 +7,10 @@ import * as topDown from '../../components/pageDefaults'
 
 
 import React, {useState, useEffect} from "react"
-import Wordtyper from "@/components/typewriter";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
-export default function projects() {
+export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(0)
     const [numImg, setNumImg] = useState(0)
     const currentProject = projectData.completedProjects[selectedProject]

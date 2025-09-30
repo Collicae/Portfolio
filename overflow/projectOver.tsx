@@ -1,5 +1,3 @@
-import React, {useRef} from "react";
-
 export const completedProjects = [
     {name: "Blu's Universal Foods", desc: 
         "The first website I made outside of high school, was my first time using React thus the organization of the code leave more to be desired. Although my first time is scrappy it was an important starting point in my journey. What I used in the website is React and Vanilla CSS",

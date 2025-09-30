@@ -118,9 +118,9 @@ export default function Home() {
                     >
                     
                     <div key={index} className="smooth-font-size flex h-full items-center justify-center lg:text-5xl md:text-3xl text-lg transition duration-300 ease-in hover:text-black hover:lg:text-6xl hover:md:text-4xl hover:text-xl cursor-pointer"
-                    style={{
-                      ['--hover-bg' as any]: item.back
-                    }}
+                   style={{
+                    ['--hover-bg']: item.back
+                  } as React.CSSProperties}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = item.back;
                     }}

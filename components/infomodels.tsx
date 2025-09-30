@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState, useEffect} from "react"
+import React from "react"
 
 type ProjectItem = {
     image: string;

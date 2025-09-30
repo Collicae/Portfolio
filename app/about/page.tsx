@@ -91,7 +91,7 @@ export default function About() {
             <div className="relative w-full h-75 flex justify-center md:justify-start items-end border-b-4 border-[#3b536b] mb-5">
 
                 <div className="font-serif">
-                    <h3 className="ml-5 w-90 text-[#636262] text-lg">Hey There! I'm a {aboutData.encouragingWords[currentWord].word} developer trying to leave my mark on the World.</h3>
+                    <h3 className="ml-5 w-90 text-[#636262] text-lg">Hey There! I&apos;m a {aboutData.encouragingWords[currentWord].word} developer trying to leave my mark on the World.</h3>
                     <h1 className="text-transparent bg-clip-text bg-gradient-to-t from-[#1d2a35] to-indigo-500 text-7xl md:text-[8rem] lg:text-[10rem] w-full]">Caleb Collins</h1>
                 </div>
 
