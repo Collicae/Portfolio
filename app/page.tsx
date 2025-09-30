@@ -1,102 +1,227 @@
-import Image from "next/image";
+"use client"
 
+//Extra data for the home page
+import * as homeData from '../overflow/homeOver'
+import * as topDown from '../components/pageDefaults'
+
+
+
+
+
+//General imports
+import { MdArrowBackIosNew } from "react-icons/md";
+import { MdOutlineArrowForwardIos } from "react-icons/md";
+import { useState, useEffect, useRef, useCallback } from "react";
+import Wordtyper from "@/components/typewriter";
+import Link from "next/link";
+import ProgressBar from "@/components/progressbar";
+import TileInfo from '@/components/tile';
+import Informationmodal from '@/components/infomodels';
+
+
+
+
+
+
+type ProjectItem = {
+  image: string;
+  text: string;
+  date: string;
+};
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [current, setcurrent] = useState(0)
+  const INTERVAL_TIME = 10000
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [selectedSkill, setSelectedSkill] = useState(0);
+  const [selectedItem, setSelectedItem] = useState<ProjectItem | null>(null);
+  const currentSkill = homeData.skillProgression[selectedSkill];
+  const currentDescription = homeData.skillDescription[selectedSkill]
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const resetInterval = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
+    intervalRef.current = setInterval(() => {
+      setcurrent(prev => (prev + 1) % homeData.colorShifts.length);
+    }, INTERVAL_TIME);
+  }, []);
+
+  useEffect(() => {
+    resetInterval(); // Start the interval initially
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current); // Clean up on unmount
+    };
+  }, [resetInterval]);
+
+  const progressInterval = () => {
+    setcurrent(prev => (prev + 1) % homeData.colorShifts.length);
+    resetInterval(); // Reset timer on user interaction
+  };
+
+  const regressInterval = () => {
+    setcurrent(prev => (prev - 1 + homeData.colorShifts.length) % homeData.colorShifts.length);
+    resetInterval();
+  };
+
+
+  const Index = homeData.colorShifts[current] // captures the color interval useEffect
+  const currentShift = homeData.colorShifts[current]; // e.g., index 0, 1, etc.
+
+  return (
+    <div className="">
+      <main className="">
+
+          {topDown.MainHeader()}
+          
+          <div className="relative bg-black lg:h-180 md:h-160 sm:h-100 h-90 justify-between flex items-center overflow-hidden">
+            {/* Left Arrow Button */}
+            <div
+              onClick={regressInterval}
+              className="absolute z-20 md:text-lg text-sm p-6 bg-[#7c777c]/20 max-w-40 ml-2 rounded-md"
+            >
+              <MdArrowBackIosNew />
+            </div>
+
+            {/* Background Image + Dimming Overlay */}
+            <div className="absolute inset-0 z-0">
+              {/* Background image */}
+              <div
+                style={{ backgroundImage: `url(${currentShift.image})` }}
+                className="w-full h-full bg-no-repeat lg:bg-contain bg-cover bg-center lg:bg-center"
+              />
+              {/* Dimming overlay */}
+              <div className="absolute inset-0 bg-black/40" />
+            </div>
+
+            {/* Foreground Content (Text Only) */}
+            <div className="relative z-10 w-full h-full flex justify-start items-end px-6 text-4xl md:text-5xl">
+              <Wordtyper key={current} words={[Index.text]} />
+            </div>
+
+            {/* Right Arrow Button */}
+            <div
+              onClick={progressInterval}
+              className="absolute z-20 right-0 md:text-lg text-sm p-6 bg-[#7c777c]/20 max-w-40 mr-2 rounded-md"
+            >
+              <MdOutlineArrowForwardIos />
+            </div>
+          </div>
+
+          <div className="bg-[#282832]">
+            <div className="h-20 overflow-x-auto md:overflow-x-visible">
+                <nav className="grid grid-cols-3 grid-rows-1 h-full">
+
+                  {homeData.aboutNav.map((item, index) => (
+                      <Link
+                      key={index}
+                      href={item.href}
+                      passHref
+                    >
+                    
+                    <div key={index} className="smooth-font-size flex h-full items-center justify-center lg:text-5xl md:text-3xl text-lg transition duration-300 ease-in hover:text-black hover:lg:text-6xl hover:md:text-4xl hover:text-xl cursor-pointer"
+                    style={{
+                      ['--hover-bg' as any]: item.back
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = item.back;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                    }}>
+                      <h2 className=""> {item.page} </h2>
+                    </div>
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+          </div>
+
+          <div className="flex w-full overflow-x-auto space-x-6 py-4 bg-black hide-scrollbar">
+            {homeData.skillSet.map((item, index) => {
+              const Icon = item.icon;
+              const isSelected = selectedSkill === index;
+
+              return (
+                <div
+                  key={index}
+                  onClick={() => setSelectedSkill(index)}
+                  style={
+                    isSelected
+                      ? {
+                          background: `linear-gradient(to top, ${item.color}93, transparent)`,
+                        }
+                      : {}
+                  }
+                  className="flex flex-col items-center justify-center min-w-[150px] cursor-pointer rounded-lg px-4 py-2 transition-all duration-300"
+                >
+                  <Icon className="text-2xl mb-2" style={{ color: item.color }} />
+                  <span>{item.name}</span>
+                </div>
+              );
+            })}
         </div>
+
+          {/* Progress Bars Section */}
+          <div className="w-full bg-gradient-to-t from-[#414152] to-[#000000]">
+            <div className="grid grid-cols-2 mt-5 md:mt-10">
+              <div className="flex flex-col">
+                <div className="p-4">
+                  <h1 className="text-4xl md:text-6xl">Stats:</h1>
+                </div>
+
+                <div className="skills-container p-4 space-y-4">
+                  <div className="skill-block">
+                    <h3 className="text-2xl font-semibold mb-4">{currentSkill.name}</h3>
+
+                    <div className="progress-item mb-3">
+                      <span className="text-lg md:text-3xl">Usage: {currentSkill.usage}%</span>
+                      <ProgressBar progress={parseInt(currentSkill.usage)} />
+                    </div>
+
+                    <div className="progress-item mb-3">
+                      <span className="text-lg md:text-3xl">Experience: {currentSkill.experience}%</span>
+                      <ProgressBar progress={parseInt(currentSkill.experience)} />
+                    </div>
+
+                    <div className="progress-item mb-3">
+                      <span className="text-lg md:text-3xl">Knowledge: {currentSkill.knowledge}%</span>
+                      <ProgressBar progress={parseInt(currentSkill.knowledge)} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            {/* Right column: 1 item spanning the full height */}
+            <div className="p-4 row-span-3 h-100 flex text-sm md:text-2xl overflow-y-auto">
+              <Wordtyper words={[currentDescription.text]}/>
+          </div>
+        </div>
+      </div>
+
+          {/* Display my current projects */}
+          <div className="mt-10 w-full">
+            <div className=' md:mx-10 rounded-lg'>
+                <h1 className='text-4xl md:text-6xl md:ml-5 md:text-left text-center mb-10'>Current Projects:</h1>
+
+                <div className='h-120 overflow-x-auto'>
+                  <div className='grid auto-rows-fr grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-4'>
+
+                    {homeData.currentProjects.map((items, index) => (
+                      <div key={index} onClick={() => setSelectedItem(items)} className='cursor-pointer'>
+                        <TileInfo text={items.text} date={items.date} image={items.image}/>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+            </div>
+            {selectedItem && (
+              <Informationmodal
+                item={selectedItem}
+                onClose={() => setSelectedItem(null)}/>
+            )}
+          </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      <footer className=''>
+            {topDown.FooterDefault()}
       </footer>
     </div>
   );
