@@ -28,8 +28,8 @@ type SocialDirectoryProp = {
 //Names and links to my other programming accounts
 //Should only keep 4 or less at a time to not overextent footer
 const socialsDirectory: SocialDirectoryProp[] = [
-    {name: 'Github', link: '#', icon: FaGithub, color: '#0077B5'},
-    {name: 'LinkedIn', link: '#', icon: FaLinkedin, color: '#8e8989'},
+    {name: 'Github', link: 'https://github.com/Collicae', icon: FaGithub, color: '#0077B5'},
+    {name: 'LinkedIn', link: 'https://www.linkedin.com/in/caleb-collins-4b364b336', icon: FaLinkedin, color: '#8e8989'},
 ]
 
 export default function About() {
@@ -134,28 +134,37 @@ export default function About() {
                     const Icon = item.icon;
                     const currentLink = selectedLink === index
                     return (
-                        <div key={index} className="flex justify-center gap-2 items-center text-2xl md:text-4xl p-2 md:p-8 md:mx-20 cursor-pointer" 
-                        onClick={() => setSelectedLink(index)}
-                        style={
-                          currentLink
-                            ? {
-                                background: `linear-gradient(to top, ${item.color}93, transparent)`,
-                                color: `${item.color}`,
+                        <a
+                            key={index}
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setSelectedLink(index)}
+                             className="flex justify-center gap-2 items-center text-2xl md:text-4xl p-2 md:p-8 md:mx-20 cursor-pointer"
+                            style={
+                                currentLink
+                                  ? {
+                                      background: `linear-gradient(to top, ${item.color}93, transparent)`,
+                                      color: item.color,
+                                    }
+                                  : {}
                               }
-                            : {}
-                        }
-                        >
-                            <Icon 
-                                 style={
+                            >
+                            <div
+                                className="flex justify-center gap-2 items-center text-2xl md:text-4xl p-2 md:p-8 md:mx-20 cursor-pointer"
+                            >
+                                <Icon
+                                style={
                                     currentLink
-                                      ? {
-                                          color: `${item.color}`,
+                                    ? {
+                                        color: `${item.color}`,
                                         }
-                                      : {}
-                                  }
-                            />
-                            <p className="text-white">{item.name}</p>
-                        </div>
+                                    : {}
+                                }
+                                />
+                                <p className="text-white">{item.name}</p>
+                            </div>
+                            </a>
                     )
                     })}
 
