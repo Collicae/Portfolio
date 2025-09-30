@@ -16,9 +16,10 @@ export const completedImage = [
        '/completed/Website/Screenshot 2025-09-30 at 11.54.28 AM.png',
     ]},
     {name: 'Real estate Website', img: [
-        '/completed/app/Image 1.jpg',
-        '/completed/app/Image 2.jpg',
-        '/completed/app/Image 3.jpg',
+       '/completed/app/Screenshot 2025-09-30 at 6.24.43 PM.png',
+       '/completed/app/Screenshot 2025-09-30 at 6.27.26 PM.png',
+       '/completed/app/Screenshot 2025-09-30 at 6.28.52 PM.png',
+       '/completed/app/Screenshot 2025-09-30 at 6.29.00 PM.png',
     ]},
 ]
 
