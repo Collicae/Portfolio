@@ -7,6 +7,7 @@ import * as topDown from '../../components/pageDefaults'
 
 
 import React, {useState, useEffect} from "react"
+import Image from "next/image"
 import { MdArrowBackIosNew } from "react-icons/md";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 
@@ -16,7 +17,7 @@ export default function Projects() {
     const currentProject = projectData.completedProjects[selectedProject]
 
 
-    const Index = projectData.completedProjects[selectedProject]
+    //const Index = projectData.completedProjects[selectedProject]
     const imgIndex = projectData.completedImage[selectedProject]
 
     useEffect(() => {
@@ -74,7 +75,7 @@ export default function Projects() {
                                 <MdArrowBackIosNew />
                             </div>
                                 
-                                <img  src={imgIndex.img[numImg]} className="h-full w-full object-fill" alt="pictures of the projects"/>
+                                <Image src={imgIndex.img[numImg]} height={300} width={300} className="h-full w-full object-fill" alt="pictures of the projects"/>
                               
                                 <div
                                 onClick={progressInterval}

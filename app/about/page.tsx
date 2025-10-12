@@ -170,6 +170,15 @@ export default function About() {
 
                 </div>
 
+                {scrollOffset > 400 && (
+                    <button
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        className="fixed bottom-5 right-5 p-4 bg-indigo-600 text-white rounded-full shadow-lg"
+                    >
+                        ↑ Back to Top
+                    </button>
+                    )}
+
             </div>
 
             <footer>

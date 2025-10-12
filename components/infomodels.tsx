@@ -1,6 +1,7 @@
 'use client'
 
 import React from "react"
+import Image from "next/image";
 
 type ProjectItem = {
     image: string;
@@ -21,7 +22,7 @@ export default function Informationmodal({item, onClose}: InformationModalProps)
           <button onClick={onClose} className="absolute top-2 right-3 text-gray-600 hover:text-black">
             ✕
           </button>
-          <img src={item.image} alt="Tile" className="w-full rounded mb-4" />
+          <Image src={item.image} alt="Tile" width={300} height={300} className="w-full rounded mb-4" />
           <h2 className="text-lg text-black font-bold mb-2">{item.text}</h2>
           <p className="text-black mb-1"> Started: {item.date}</p>
           {/* Add more details here if available */}
