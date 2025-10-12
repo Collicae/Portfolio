@@ -1,48 +1,12 @@
 'use client';
 
-/*
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 import React from 'react';
 import { futurePlans } from '@/overflow/plansOver';
-
-const MAX_SECTIONS = 10; // max sections you want to support
-
-function useSectionTransforms(
-  scrollYProgress: MotionValue<number>,
-  totalSections: number
-) {
-  const sectionHeight = 1 / MAX_SECTIONS; // Use MAX_SECTIONS here
-
-  const yTransforms: MotionValue<string>[] = [];
-  const opacityTransforms: MotionValue<number>[] = [];
-
-  for (let index = 0; index < MAX_SECTIONS; index++) {
-    const start = sectionHeight * index;
-    const end = start + sectionHeight;
-
-    yTransforms.push(useTransform(scrollYProgress, [start, end], ['20%', '0%']));
-
-    opacityTransforms.push(
-      useTransform(
-        scrollYProgress,
-        [
-          start + sectionHeight * 0.2,
-          start + sectionHeight * 0.35,
-          end - sectionHeight * 0.35,
-          end - sectionHeight * 0.2,
-        ],
-        [0, 1, 1, 0]
-      )
-    );
-  }
-
-  // Only return transforms up to totalSections length (dynamic part)
-  return yTransforms.slice(0, totalSections).map((y, i) => ({ y, opacity: opacityTransforms[i] }));
-}
+import { useSectionTransforms } from '@/customHooks/parallaxHook';
 
 const ParallaxScroll: React.FC = () => {
   const { scrollYProgress } = useScroll();
-
   const totalSections = futurePlans.length;
 
   const transforms = useSectionTransforms(scrollYProgress, totalSections);
@@ -53,7 +17,7 @@ const ParallaxScroll: React.FC = () => {
         const { y, opacity } = transforms[index];
 
         return (
-          <div key={index} className="relative w-full h-screen overflow-hidden">
+          <div key={plan.name || index} className="relative w-full h-screen overflow-hidden">
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
               style={{ backgroundImage: `url(${plan.image})` }}
@@ -77,7 +41,7 @@ const ParallaxScroll: React.FC = () => {
                       href={plan.Links}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-black underline mt-2 p-2 rounded-2xl text-3xl mt-5 bg-gray-300 hover:bg-gray-400 inline-block cursor-pointer"
+                      className="text-black underline p-2 rounded-2xl text-3xl mt-5 bg-gray-300 hover:bg-gray-400 inline-block cursor-pointer"
                     >
                       View Project
                     </a>
@@ -93,5 +57,3 @@ const ParallaxScroll: React.FC = () => {
 };
 
 export default ParallaxScroll;
-
-*/
