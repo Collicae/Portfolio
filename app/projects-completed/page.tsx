@@ -45,11 +45,11 @@ export default function Projects() {
 
 
                 {/* Start of the completed projects grid */}
-                <div className="grid grid-cols-3  mt-10 bg-gray-300 p-0 ">
+                <div className="grid grid-cols-3 md:mx-5 mt-10 bg-gray-300 p-0 mb-10  border-2">
 
                     <div className="">
 
-                        <div className="border-r-4 h-full bg-[#444039]">
+                        <div className="border-r-4 h-full bg-[#2a2723]">
                             <h1 className="text-center content-center text-2xl md:text-3xl lg:text-4xl h-20 bg-[#787f8e] font-bold">Completed Projects</h1>
 
                             <ul className="overflow-y-auto">
@@ -70,7 +70,7 @@ export default function Projects() {
 
                             <div
                                 onClick={regressInterval}
-                                className="absolute z-20 md:text-lg text-sm p-6 bg-[#7c777c]/20 max-w-40 ml-2 rounded-md cursor-pointer">
+                                className="absolute z-20 md:text-lg text-sm p-6 bg-[#7c777c]/20 hover:bg-[#7c777c]/50 max-w-40 ml-2 rounded-md cursor-pointer">
                                 <MdArrowBackIosNew />
                             </div>
                                 
@@ -78,7 +78,7 @@ export default function Projects() {
                               
                                 <div
                                 onClick={progressInterval}
-                                    className="absolute z-20 right-0 md:text-lg text-sm p-6 bg-[#7c777c]/20 max-w-40 mr-2 rounded-md cursor-pointer">
+                                    className="absolute z-20 right-0 md:text-lg text-sm p-6 bg-[#7c777c]/20 hover:bg-[#7c777c]/50 max-w-40 mr-2 rounded-md cursor-pointer">
                                     <MdOutlineArrowForwardIos />
                                 </div>
                             </div>
@@ -94,7 +94,7 @@ export default function Projects() {
                               
                                 <br />
 
-                                <p className="text-lg ml-2"> {[currentProject.desc]}</p>
+                                <p className="text-2lg ml-2"> {[currentProject.desc]}</p>
                      
                             </div>
                             

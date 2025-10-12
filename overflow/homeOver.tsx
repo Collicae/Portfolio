@@ -24,7 +24,7 @@ export const colorShifts = [
 export const aboutNav = [
     {page: 'About', back: '#E6E6FA', href: '/about'},
     {page: 'Projects (C)', back: '#B0E0E6', href: '/projects-completed'},
-    {page: 'Plans', back: '#BDFCC9', href: '/#'},
+    {page: 'Plans', back: '#BDFCC9', href: '/plans'},
   ]
   
   export const skillSet = [

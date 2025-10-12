@@ -10,7 +10,7 @@ export const completedProjects = [
 
 export const completedImage = [
     {name: 'First Website', img: [
-       '/completed/Website/Screenshot 2025-09-30 at 11.53.58 AM.png',
+       '/completed/Website/blusHomemadeHomeScreen.png',
        '/completed/Website/Screenshot 2025-09-30 at 11.54.07 AM.png',
        '/completed/Website/Screenshot 2025-09-30 at 11.54.16 AM.png',
        '/completed/Website/Screenshot 2025-09-30 at 11.54.28 AM.png',
