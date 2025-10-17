@@ -25,11 +25,12 @@ export default function FuturePlans() {
                     <h2 className="text-xl md:text-3xl lg:text-4xl">More items will be announced shortly after confirmation</h2>
                 </div>
 
-                {/* List of different languages / Frameworks that I plan on studying  */}
+                {/* List of different languages / Frameworks that I plan on studying  
                 <div>
                     <h1>Future Languages and Frameworks planned on learning</h1>
 
                 </div>
+                */}
 
             {topDown.FooterDefault()}
         </div>
