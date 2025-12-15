@@ -34,7 +34,7 @@ export function FooterDefault() {
                     </div>
                 </div>
 
-                <div className="flex justify-end items-end">
+                <div className="flex flex-col justify-end items-end">
                     <h2>This portfolio contains work created by me unless otherwise stated. All third-party content is credited to its respective owners. This site is publicly accessible and does not intentionally contain confidential or sensitive information.</h2>
 
                    <h1 className="lg:text-4xl md:text-3xl md:ml-5 text-2xl">{currentYear} Caleb Collins. All Rights Reserved.</h1>
