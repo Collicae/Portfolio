@@ -95,7 +95,7 @@ export default function Projects() {
                               
                                 <br />
 
-                                <p className="text-2lg ml-2"> {[currentProject.desc]}</p>
+                                <p className="text-2lg ml-2 whitespace-pre-line"> {[currentProject.desc]}</p>
                      
                             </div>
                             
