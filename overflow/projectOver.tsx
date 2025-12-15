@@ -8,7 +8,7 @@ export const completedProjects = [
         openDate: "02/20/2025", closeDate: "03/19/2025"},
 
     {name: "Class Project Starship Enhancment", desc: 
-        "One of the 3 Freshman projects in my first semester, my group members and I were tasked with finding alternative ways Starships could be used around campus. My group came up with the idea that startships could also be used as long distance campus tours robots to help others get a view of a colleges campus without having to travel all the way there. \n\n Group Members: \n\n-Bosco\n-Joey\n-Yanjin\n-Caleb", 
+        "One of the 3 Freshman projects in my first semester, my group members and I were tasked with finding alternative ways Starships could be used around campus. My group came up with the idea that startships could also be used as long distance campus tours robots to help others get a view of a colleges campus without having to travel all the way there. \n\n Group Members: \n\n-Bosco\n-Joey\n-Yanjin", 
         openDate: "10/01/2025", closeDate: "10/08/2025"},
 
     {name: "Class Project Basic App Planning", desc: 
