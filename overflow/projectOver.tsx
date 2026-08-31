@@ -20,6 +20,13 @@ export const completedProjects = [
         openDate: "11/01/2025", closeDate: "12/15/2025"},
 ]
 
+
+// Use this for the uploading of models from sketchfab for CGT 11600 (Purdue)
+export const completedModels = [
+    {name: 'Introductory to Maya', desc: 'First time using AutoDesk Maya to make a model of my name and uploading it to Sketchfab.',
+        openDate: '08/25/2026', closeDate: '08/31/2026'},
+]
+
 export const completedImage = [
     {name: 'First Website', img: [
        '/completed/Website/blusHomemadeHomeScreen.png',
@@ -48,6 +55,16 @@ export const completedImage = [
        '/completed/school/project3_Sales.png',
        '/completed/school/project3_Map.png',
      ]},
+]
+
+
+
+interface ModelItem {
+    name: string
+    upload: string
+  }
+export const modelImgs: ModelItem[] = [
+    {name: "Name Model", upload: "/completed/models/wk1__logo.glb"}
 ]
 
   
