@@ -23,8 +23,18 @@ export const completedProjects = [
 
 // Use this for the uploading of models from sketchfab for CGT 11600 (Purdue)
 export const completedModels = [
-    {name: 'Introductory to Maya', desc: 'First time using AutoDesk Maya to make a model of my name and uploading it to Sketchfab.',
-        openDate: '08/25/2026', closeDate: '08/31/2026'},
+    {
+        name: 'Introductory to Maya', 
+        desc: 'First time using AutoDesk Maya to make a model of my name and uploading it to Sketchfab. \nLink to Model: https://skfb.ly/pNpN8',
+        openDate: '08/25/2026', 
+        closeDate: '08/31/2026',
+    },
+    {
+        name: "Block Out ProcessBook",
+        desc: "Tasked with making a block out of a scene. So I was going to start on my final but wanted to do something space themed so just messed around there. But space is not my final theme. \nLink to Model: https://skfb.ly/pNNUF",
+        openDate: '08/28/2026',
+        closeDate: '09/17/2026',
+    },
 ]
 
 export const completedImage = [
@@ -64,7 +74,8 @@ interface ModelItem {
     upload: string
   }
 export const modelImgs: ModelItem[] = [
-    {name: "Name Model", upload: "/completed/models/wk1__logo.glb"}
+    {name: "Name Model", upload: "/completed/models/wk1__logo.glb"},
+    {name: "Block Out", upload: "/completed/models/collins__caleb__process_book1.glb"}
 ]
 
   

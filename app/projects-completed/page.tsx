@@ -8,6 +8,7 @@ import * as topDown from '../../components/pageDefaults'
 
 import React, {useState, useEffect} from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { MdArrowBackIosNew } from "react-icons/md";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { useGLTF } from '@react-three/drei'
@@ -49,10 +50,7 @@ export default function Projects() {
 
 
                 {/* Brief explaination of my work */}
-                <div>
-
-
-                </div>
+                <div></div>
 
 
                 {/* Start of the completed projects grid */}
@@ -72,14 +70,10 @@ export default function Projects() {
                             </ul>
 
                             
-
-
-
-
-
                             {/* Use this for the models from CGT 11600 (Purdue) */}
                             <h1 className="text-center content-center text-2xl md:text-3xl lg:text-4xl h-20 bg-[#787f8e] font-bold">Completed Models</h1>
 
+                            
                             <ul className="overflow-y-auto">
                                 {projectData.completedModels.map((item, index) => (
                                     <li key={index} onClick={() => {setSelectedModels(index), setActiveSource('model')}} className="text-2xl overflow-x-auto hide-scrollbar whitespace-nowrap py-5 bg-[#42474f] hover:bg-[#2c2f34] cursor-pointer">
@@ -88,19 +82,16 @@ export default function Projects() {
                                 ))}
                             </ul>
                         </div>
-
                     </div>
                     
                     
                     <div className="col-span-2 grid grid-rows-[auto_auto] ">
-                            
                             <div className="flex items-center ">
-
-                            <div
-                                onClick={regressInterval}
-                                className="absolute z-20 md:text-lg text-sm p-6 bg-[#7c777c]/20 hover:bg-[#7c777c]/50 max-w-40 ml-2 rounded-md cursor-pointer">
-                                <MdArrowBackIosNew />
-                            </div>
+                                <div
+                                    onClick={regressInterval}
+                                    className="absolute z-20 md:text-lg text-sm p-6 bg-[#7c777c]/20 hover:bg-[#7c777c]/50 max-w-40 ml-2 rounded-md cursor-pointer">
+                                    <MdArrowBackIosNew />
+                                </div>
                                 
                                 {activeSource === 'project' && currentProject && (
                                     <Image src={imgIndex.img[numImg]} height={300} width={300} className="h-full w-full object-fill" alt="pictures of the projects"/>
@@ -119,18 +110,13 @@ export default function Projects() {
                                     </div>
                                 )}
                               
-                                <div
-                                onClick={progressInterval}
+                                <div onClick={progressInterval}
                                     className="absolute z-20 right-0 md:text-lg text-sm p-6 bg-[#7c777c]/20 hover:bg-[#7c777c]/50 max-w-40 mr-2 rounded-md cursor-pointer">
                                     <MdOutlineArrowForwardIos />
                                 </div>
                             </div>
 
 
-
-                               
-                                
-                            
                             <div className="text-2xl md:text-3xl lg:text-4xl bg-black overflow-y-auto overflow-x-hidden break-words whitespace-normal">
                                     {activeSource === 'project' && currentProject && (
                                         <>
@@ -156,12 +142,19 @@ export default function Projects() {
                                         <br />
                                         <p className="text-2lg ml-2 whitespace-pre-line">{currentModel.desc}</p>
                                         </>
-                                    )}
-                                </div>
+                                    )} 
+                                
+                                </div>      
+                    </div>
+                </div>
 
 
-                            
-                            
+                {/* Delete this after Semester */}
+                <div className=" flex justify-center mb-5">
+                    <div className="bg-[#6e98a9] hover:bg-[#486a79] flex w-[50%] justify-center rounded-2xl cursor-pointer">
+                        <Link href={"3dModels"}>
+                            <h1 className="text-4xl">Click to See 3D Models</h1>
+                        </Link>
                     </div>
                 </div>
 
