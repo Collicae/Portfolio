@@ -15,12 +15,6 @@ export default function myModels() {
     date: m.closeDate,
   }))
 
-  const projectCards: CardItem[] = modelProj.completedModels.map((p: any) => ({
-    name: p.text,
-    date: p.date,
-    image: p.image,
-  }))
-
   return (
     <>
       <div>
